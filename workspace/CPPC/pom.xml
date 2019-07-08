@@ -12,6 +12,7 @@
 	<artifactId>CPPC</artifactId>
 	<version>1.0.0</version>
 	<name>CPPC</name>
+	<packaging>war</packaging>
 	<description>Project for Spring Boot</description>
 
 	<properties>
