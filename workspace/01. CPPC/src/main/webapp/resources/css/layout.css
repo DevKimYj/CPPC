@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+/*************************************
+layout-base
+**************************************/
+._body{
+	margin:0px;
+	padding:0px;
+	background-color:#ffffff;
+	overflow-x:hidden;
+	overflow-y:hidden;
+}
+
+/*************************************
+layout-header
+**************************************/
+._header_div{
+	width:100%;
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-left:10px;
+	background-color:#091120;
+}
