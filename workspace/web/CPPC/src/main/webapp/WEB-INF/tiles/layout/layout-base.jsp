@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title><tiles:insertAttribute name="title"/></title>
 <meta charset="UTF-8">
 <link type="text/css" rel="stylesheet" href="<c:url value='/resources/css/layout.css'/>"/>
 </head>
