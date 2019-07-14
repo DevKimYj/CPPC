@@ -9,7 +9,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * Handles requests for the application home page.
+  * @FileName : MainController.java
+  * @Project : CPPC
+  * @Date : 2019. 7. 14. 
+  * @작성자 : Include
+  * @변경이력 :
+  * @프로그램 설명 : main화면 컨트롤러
  */
 @Controller
 public class MainController {
@@ -17,12 +22,18 @@ public class MainController {
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
 	/**
-	 * 호출 URL : /main.cpp
+	  * @Method Name : main
+	  * @작성일 : 2019. 7. 14.
+	  * @작성자 : Include
+	  * @변경이력 : 
+	  * @Method 설명 : main화면을 보여줍니다.
+	  * @param locale
+	  * @param model
+	  * @return
 	 */
 	@RequestMapping(value = "/main.cpp")
 	public String main(Locale locale, Model model) {
 		logger.debug("call /main.cpp");
 		return "main/main";
 	}
-	
 }
