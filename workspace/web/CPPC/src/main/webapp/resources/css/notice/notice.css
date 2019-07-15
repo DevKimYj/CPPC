@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+/*************************************
+게시판 헤더
+**************************************/
+.notice-header{
+	width:100%;
+}
+.notice-header > .notice-title{
+	width:50%;
+	text-align:left;
+}
+.notice-header > .notice-title > .title{
+	width:50%;
+	font-size:20px;
+}
+
+/*************************************
+게시판 내용
+**************************************/
+.notice-body{
+	width:100%;
+}
