@@ -30,7 +30,7 @@ public class MainController {
 	  * @param locale
 	  * @param model
 	  * @return
-	 */ 
+	 */
 	@RequestMapping(value = "/main.cpp")
 	public String main(Locale locale, Model model) {
 		logger.debug("call /main.cpp");
