@@ -32,7 +32,7 @@ public class MainController {
 	  * @return
 	 */
 	@RequestMapping(value = "/main.cpp")
-	public String main(Locale locale, Model model) {
+	public String mainView(Locale locale, Model model) {
 		logger.debug("call /main.cpp");
 		return "main/main";
 	}
