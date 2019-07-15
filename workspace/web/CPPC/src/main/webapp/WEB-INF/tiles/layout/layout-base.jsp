@@ -4,8 +4,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title><tiles:insertAttribute name="title"/></title>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width" />
+<title><tiles:insertAttribute name="title"/></title>
 <link type="text/css" rel="stylesheet" href="<c:url value='/resources/css/layout.css'/>"/>
 </head>
 <body class="_body">
@@ -13,10 +14,10 @@
 		<tiles:insertAttribute name="header"/>
 	</div>
 	<div style="float:left; width:100%;">
-		<div style="float:left; width:30px; height:100vh; background-color:#000000;">
+		<div style="float:left; width:5%; height:100vh; background-color:#000000;">
 			<tiles:insertAttribute name="menu"/>
 		</div>
-		<div style="float:left; width:*;">
+		<div style="float:left; width:95%;">
 			<tiles:insertAttribute name="contents"/>
 		</div>
 	</div>

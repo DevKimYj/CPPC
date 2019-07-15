@@ -1,4 +1,4 @@
-package com.u1.cpp.main.web;
+package com.u1.cpp.notice.web;
 
 import java.util.Locale;
 
@@ -9,7 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
-  * @FileName : MainController.java
+  * @FileName : NoticeController.java
   * @Project : CPPC
   * @Date : 2019. 7. 14. 
   * @작성자 : Include
@@ -17,23 +17,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
   * @프로그램 설명 : main화면 컨트롤러
  */
 @Controller
-public class MainController {
+public class NoticeController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
+	private static final Logger logger = LoggerFactory.getLogger(NoticeController.class);
 	
 	/**
 	  * @Method Name : main
 	  * @작성일 : 2019. 7. 14.
 	  * @작성자 : Include
 	  * @변경이력 : 
-	  * @Method 설명 : main화면을 보여줍니다.
+	  * @Method 설명 : 게시판 화면을 보여줍니다.
 	  * @param locale
 	  * @param model
 	  * @return
 	 */
-	@RequestMapping(value = "/main.cpp")
-	public String mainView(Locale locale, Model model) {
-		logger.debug("call /main.cpp");
-		return "main/main";
+	@RequestMapping(value = "/notice.cpp")
+	public String noticeView(Model model) {
+		logger.debug("call /notice.cpp");
+		return "notice/notice";
 	}
 }
