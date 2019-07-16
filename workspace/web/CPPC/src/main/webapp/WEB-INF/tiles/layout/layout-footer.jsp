@@ -15,6 +15,10 @@
 			<tbody>
 				<tr>
 					<td style="text-align:left;">
+						<!--
+							개인정보 취급방침 작성 사이트
+							 https://www.privacy.go.kr/a3sc/per/inf/perInfStep01.do
+						 -->
 						<span>개발자들 | 개인정보취급방침 | data | text</span>
 					</td>
 					<td style="text-align:right;">
