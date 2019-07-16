@@ -1,5 +1,7 @@
 package com.u1.cpp.main.web;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -34,6 +36,15 @@ public class MainController {
 	@RequestMapping(value = "/main.cpp")
 	public String mainView(Locale locale, Model model) {
 		logger.debug("call /main.cpp");
+		Calendar toDay = Calendar.getInstance();
+		
+		SimpleDateFormat formatter = new SimpleDateFormat("hh");
+		int test = Integer.parseInt(formatter.format(toDay.getTime()));
+
+		formatter = new SimpleDateFormat("yyyyMMdd");
+		String strDate = formatter.format(toDay.getTime());
+		strDate = String.format("%d", Integer.parseInt(strDate) - 1); //for file-name
+		
 		return "main/main";
 	}
 }

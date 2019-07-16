@@ -10,16 +10,14 @@
 <link type="text/css" rel="stylesheet" href="<c:url value='/resources/css/layout.css'/>"/>
 </head>
 <body class="_body">
-	<div style="float:left; width:100%;">
+	<div class="_header">
 		<tiles:insertAttribute name="header"/>
 	</div>
-	<div style="float:left; width:100%;">
-		<div style="float:left; width:5%; height:100vh; background-color:#000000;">
-			<tiles:insertAttribute name="menu"/>
-		</div>
-		<div style="float:left; width:95%;">
-			<tiles:insertAttribute name="contents"/>
-		</div>
+	<div class="_contents">
+		<tiles:insertAttribute name="contents"/>
+	</div>
+	<div class="_footer">
+		<tiles:insertAttribute name="footer"/>
 	</div>
 </body>
 </html>

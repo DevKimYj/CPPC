@@ -19,7 +19,7 @@
 	</div>
 </div>
 <div class="notice-body">
-
+	
 </div>
 </body>
 </html>
