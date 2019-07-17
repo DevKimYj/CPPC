@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
   * @Date : 2019. 7. 14. 
   * @작성자 : Include
   * @변경이력 :
-  * @프로그램 설명 : main화면 컨트롤러
+  * @프로그램 설명 : main 컨트롤러
  */
 @Controller
 public class MainController {
@@ -45,6 +45,6 @@ public class MainController {
 		String strDate = formatter.format(toDay.getTime());
 		strDate = String.format("%d", Integer.parseInt(strDate) - 1); //for file-name
 		
-		return "main/main";
+		return "main/main.t";
 	}
 }

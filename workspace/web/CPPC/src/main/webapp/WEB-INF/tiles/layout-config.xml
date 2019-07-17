@@ -5,7 +5,7 @@
        
 <tiles-definitions>
 
-	<!-- 로그인 레이아웃 -->    
+	<!-- 기본 레이아웃 -->    
 	<definition name=".layout" template="/WEB-INF/tiles/layout/layout-base.jsp">
 		<put-attribute name="title" value="CPPC" />
 		<put-attribute name="header" value="/WEB-INF/tiles/layout/layout-header.jsp" />
@@ -14,7 +14,7 @@
 	</definition>
      
 	<!-- 기본 -->
-	<definition name="*/*" extends=".layout">
+	<definition name="*/*.t" extends=".layout">
 		<put-attribute name="contents" value="/WEB-INF/jsp/{1}/{2}.jsp" />
 	</definition>
 	
