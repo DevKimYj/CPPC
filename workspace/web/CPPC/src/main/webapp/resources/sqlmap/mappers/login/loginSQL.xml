@@ -9,4 +9,4 @@
 			FROM
 				USER_INFO
 	</select>
-</mapper> 
+</mapper>
