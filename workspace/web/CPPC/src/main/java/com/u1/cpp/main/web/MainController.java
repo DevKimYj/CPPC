@@ -24,7 +24,7 @@ public class MainController {
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
 	/** 
-	  * @Method Name : main
+	  * @Method Name : mainView
 	  * @작성일 : 2019. 7. 14.
 	  * @작성자 : Include
 	  * @변경이력 : 
