@@ -34,6 +34,6 @@ public class NoticeController {
 	@RequestMapping(value = "/notice.cpp")
 	public String noticeView(Model model) {
 		logger.debug("call /notice.cpp");
-		return "notice/notice";
+		return "notice/notice.t";
 	}
 }

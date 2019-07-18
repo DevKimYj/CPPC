@@ -1,13 +1,8 @@
 package com.u1.cpp.main.web;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Locale;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -16,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
   * @Date : 2019. 7. 14. 
   * @작성자 : Include
   * @변경이력 :
-  * @프로그램 설명 : main화면 컨트롤러
+  * @프로그램 설명 : main 컨트롤러
  */
 @Controller
 public class MainController {
@@ -24,7 +19,7 @@ public class MainController {
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
 	/** 
-	  * @Method Name : mainView
+	  * @Method Name : main
 	  * @작성일 : 2019. 7. 14.
 	  * @작성자 : Include
 	  * @변경이력 : 
@@ -34,17 +29,8 @@ public class MainController {
 	  * @return
 	 */
 	@RequestMapping(value = "/main.cpp")
-	public String mainView(Locale locale, Model model) {
+	public String mainView() {
 		logger.debug("call /main.cpp");
-		Calendar toDay = Calendar.getInstance();
-		
-		SimpleDateFormat formatter = new SimpleDateFormat("hh");
-		int test = Integer.parseInt(formatter.format(toDay.getTime()));
-
-		formatter = new SimpleDateFormat("yyyyMMdd");
-		String strDate = formatter.format(toDay.getTime());
-		strDate = String.format("%d", Integer.parseInt(strDate) - 1); //for file-name
-		
-		return "main/main";
+		return "main/main.t";
 	}
 }
