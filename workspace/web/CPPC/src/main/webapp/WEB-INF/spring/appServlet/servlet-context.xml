@@ -15,8 +15,8 @@
 	-->
 	<context:component-scan base-package="com.u1.cpp" >
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
-        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
-        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
 	</context:component-scan>
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	

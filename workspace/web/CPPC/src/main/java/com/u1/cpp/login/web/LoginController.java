@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.u1.cpp.common.SecurityUtil;
+import com.u1.cpp.login.service.LoginService;
 import com.u1.cpp.login.service.UserVO;
 import com.u1.cpp.main.web.MainController;
 
@@ -30,6 +32,10 @@ import com.u1.cpp.main.web.MainController;
 public class LoginController {
 
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
+
+	/** loginService */
+	@Resource(name = "loginService")
+	private LoginService service;
 	
 	@RequestMapping(value = "/login.cpp")
 	public String loginView() {
@@ -37,7 +43,7 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value = "/loginCheck.cpp", method=RequestMethod.POST)
-	public String loginCheck(UserVO userVo, ModelMap model, HttpServletRequest req, HttpServletResponse res) {
+	public String loginCheck(UserVO userVo, ModelMap model, HttpServletRequest req, HttpServletResponse res) throws Exception {
 		logger.debug("> loginCheck...");
 		if(userVo != null
 			&& userVo.getUserId() != null
@@ -45,6 +51,8 @@ public class LoginController {
 			&& !"".equals(userVo.getUserId())
 			&& !"".equals(userVo.getUserPw())) {
 			//DB에서 사용자 인증여부 확인하는 로직 추가
+			
+			userVo = service.loginCheck(userVo);
 			
 			long userNo = System.currentTimeMillis();
 			SimpleDateFormat dayTime = new SimpleDateFormat("yyMMddHHmmssSSS"); 
