@@ -21,7 +21,7 @@ function check(){
 	</div>
 	<div class="form-group" style="text-align:left;">
 		<label for="userId">UserID</label>
-		<input type="text" class="form-control" name="userId" id="userId" placeholder="아이디를 입력하세요.">
+		<input type="text" class="form-control" name="userId" id="userId" placeholder="아이디를 입력하세요." autocomplete="off">
 	</div>
 	<div class="form-group" style="text-align:left;">
 		<label for="userPw">Password</label>
