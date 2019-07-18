@@ -12,10 +12,8 @@ public class LoginDAO {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public UserVO loginCheck(UserVO userVo) {
-		// TODO Auto-generated method stub
-		UserVO result = sqlSession.selectOne("loginMapper.selectMember", userVo);
-		return result;
+	public UserVO loginCheck(UserVO userVo) throws Exception{
+		return sqlSession.selectOne("loginMapper.selectMember", userVo);
 	}
 
 }
