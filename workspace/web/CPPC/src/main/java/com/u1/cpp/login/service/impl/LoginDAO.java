@@ -10,10 +10,14 @@ import com.u1.cpp.login.service.UserVO;
 public class LoginDAO {
 
 	@Autowired
-	private SqlSession sqlSession;
+	private SqlSession sql;
 	
 	public UserVO loginCheck(UserVO userVo) throws Exception{
-		return sqlSession.selectOne("loginMapper.selectMember", userVo);
+		return sql.selectOne("loginMapper.selectMember", userVo);
+	}
+
+	public void createUser(UserVO userVo) throws Exception{
+		sql.insert("loginMapper.createUser", userVo);
 	}
 
 }

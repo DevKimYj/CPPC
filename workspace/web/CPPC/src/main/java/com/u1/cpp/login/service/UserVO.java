@@ -11,12 +11,19 @@ import com.u1.cpp.common.SecurityUtil;
   * @프로그램 설명 : 사용자 정보
  */
 public class UserVO {
+	private String userNo;		//사용자 고유 번호
 	private String userId;		//아이디
 	private String userPw;		//비밀번호
 	private String userEmail;	//메일 정보
 	private String authKey;		//메일인증 인증키
 	private String authstatus;	//인증 상태
 	
+	public String getUserNo() {
+		return userNo;
+	}
+	public void setUserNo(String userNo) {
+		this.userNo = userNo;
+	}
 	public String getUserId() {
 		return userId;
 	}

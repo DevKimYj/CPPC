@@ -12,5 +12,5 @@ public interface LoginService {
 	 */
 	UserVO loginCheck(UserVO userVo) throws Exception;
 
-	void userCreate(UserVO userVo) throws Exception;
+	void createUser(UserVO userVo) throws Exception;
 }

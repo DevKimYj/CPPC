@@ -76,9 +76,6 @@ public class LoginController {
 			
 			userVo = service.loginCheck(userVo);
 			
-			long userNo = System.currentTimeMillis();
-			SimpleDateFormat dayTime = new SimpleDateFormat("yyMMddHHmmssSSS"); 
-			String strDT = dayTime.format(new Date(userNo));
 			logger.debug("> result success");
 			logger.debug("> ID = " + userVo.getUserId());
 			logger.debug("> PW = " + userVo.getUserPw().length());
@@ -128,7 +125,7 @@ public class LoginController {
 	@RequestMapping(value = "/login/joinRequest.cpp")
 	public String joinRequest(UserVO userVo, ModelMap model, HttpServletRequest req, HttpServletResponse res) throws Exception {
 		//사용자 정보 생성
-		service.userCreate(userVo);
+		service.createUser(userVo);
 		
 		try {
 			res.sendRedirect("/login/login.cpp");
