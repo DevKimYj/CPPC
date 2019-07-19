@@ -15,7 +15,7 @@ import com.u1.cpp.login.web.LoginController;
   * @프로그램 설명 : 보안 유틸
  */
 public class SecurityUtil {
-	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
+	private static final Logger logger = LoggerFactory.getLogger(SecurityUtil.class);
 	public String encryptSHA256(String str) {
 		String sha = "";
 		try {

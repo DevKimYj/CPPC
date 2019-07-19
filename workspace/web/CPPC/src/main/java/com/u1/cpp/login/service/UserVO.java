@@ -11,9 +11,12 @@ import com.u1.cpp.common.SecurityUtil;
   * @프로그램 설명 : 사용자 정보
  */
 public class UserVO {
-	private String userId;
-	private String userPw;
-	private String userEmail;
+	private String userId;		//아이디
+	private String userPw;		//비밀번호
+	private String userEmail;	//메일 정보
+	private String authKey;		//메일인증 인증키
+	private String authstatus;	//인증 상태
+	
 	public String getUserId() {
 		return userId;
 	}
@@ -33,4 +36,17 @@ public class UserVO {
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
 	}
+	public String getAuthKey() {
+		return authKey;
+	}
+	public void setAuthKey(String authKey) {
+		this.authKey = authKey;
+	}
+	public String getAuthstatus() {
+		return authstatus;
+	}
+	public void setAuthstatus(String authstatus) {
+		this.authstatus = authstatus;
+	}
+	
 }

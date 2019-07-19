@@ -37,12 +37,34 @@ public class LoginController {
 	@Resource(name = "loginService")
 	private LoginService service;
 	
-	@RequestMapping(value = "/login.cpp")
-	public String loginView() {
+	/**
+	  * @Method Name : loginView
+	  * @작성일 : 2019. 7. 20.
+	  * @작성자 : Include
+	  * @변경이력 : 
+	  * @Method 설명 : 로그인 화면을 보여준다
+	  * @return
+	  * @throws Exception
+	 */
+	@RequestMapping(value = "/login/login.cpp")
+	public String loginView() throws Exception {
 		return "login/login";
 	}
 	
-	@RequestMapping(value = "/loginCheck.cpp", method=RequestMethod.POST)
+	/**
+	  * @Method Name : loginCheck
+	  * @작성일 : 2019. 7. 20.
+	  * @작성자 : Include
+	  * @변경이력 : 
+	  * @Method 설명 : 로그인 정보 검사합니다
+	  * @param userVo
+	  * @param model
+	  * @param req
+	  * @param res
+	  * @return
+	  * @throws Exception
+	 */
+	@RequestMapping(value = "/login/loginCheck.cpp", method=RequestMethod.POST)
 	public String loginCheck(UserVO userVo, ModelMap model, HttpServletRequest req, HttpServletResponse res) throws Exception {
 		logger.debug("> loginCheck...");
 		if(userVo != null
@@ -67,7 +89,7 @@ public class LoginController {
 			logger.debug("> result fails");
 			model.addAttribute("result", "F");
 			try {
-				res.sendRedirect("/login.cpp");
+				res.sendRedirect("/login/login.cpp");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -76,13 +98,84 @@ public class LoginController {
 		return "login/login";
 	}
 
-	@RequestMapping(value = "/join.cpp")
-	public String joinView() {
+	/**
+	  * @Method Name : joinView
+	  * @작성일 : 2019. 7. 20.
+	  * @작성자 : Include
+	  * @변경이력 : 
+	  * @Method 설명 : 회원가입 화면
+	  * @return
+	  * @throws Exception
+	 */
+	@RequestMapping(value = "/login/join.cpp")
+	public String joinView() throws Exception {
 		return "login/join";
 	}
+	
+	/**
+	  * @Method Name : joinRequest
+	  * @작성일 : 2019. 7. 20.
+	  * @작성자 : Include
+	  * @변경이력 : 
+	  * @Method 설명 : 회원가입 완료시 인증메일 발송 및 사용자 정보 생성
+	  * @param userVo
+	  * @param model
+	  * @param req
+	  * @param res
+	  * @return
+	  * @throws Exception
+	 */
+	@RequestMapping(value = "/login/joinRequest.cpp")
+	public String joinRequest(UserVO userVo, ModelMap model, HttpServletRequest req, HttpServletResponse res) throws Exception {
+		//사용자 정보 생성
+		service.userCreate(userVo);
+		
+		try {
+			res.sendRedirect("/login/login.cpp");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "login/login";
+	}
+	
+	/**
+	  * @Method Name : joinConfirm
+	  * @작성일 : 2019. 7. 20.
+	  * @작성자 : Include
+	  * @변경이력 : 
+	  * @Method 설명 : 이메일 인증 완료시 사용자 인증처리 후 로그인 화면으로 이동
+	  * @param userVo
+	  * @param model
+	  * @param req
+	  * @param res
+	  * @return
+	  * @throws Exception
+	 */
+	@RequestMapping(value = "/login/joinConfirm.cpp")
+	public String joinConfirm(UserVO userVo, ModelMap model, HttpServletRequest req, HttpServletResponse res) throws Exception {
+		logger.debug("joinConfirm - success");
 
+		try {
+			res.sendRedirect("/login/login.cpp");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "login/login";
+	}
+
+	/**
+	  * @Method Name : findPwView
+	  * @작성일 : 2019. 7. 20.
+	  * @작성자 : Include
+	  * @변경이력 : 
+	  * @Method 설명 : 비밀번호 찾기 화면을 보여준다
+	  * @return
+	  * @throws Exception
+	 */
 	@RequestMapping(value = "/findPw.cpp")
-	public String findPwView() {
+	public String findPwView() throws Exception {
 		return "login/findPw";
 	}
 }

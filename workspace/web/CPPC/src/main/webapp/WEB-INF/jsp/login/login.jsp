@@ -15,7 +15,7 @@ function check(){
 </script>
 </head>
 <body onload="check();" style="background-color:#22272d;">
-<form action="<c:url value='/loginCheck.cpp'/>" method="post" style="width:300px; height:400px; margin:auto; text-align:center; color:#676c71;">
+<form action="<c:url value='/login/loginCheck.cpp'/>" method="post" style="width:300px; height:400px; margin:auto; text-align:center; color:#676c71;">
 	<div class="page-header">
 		<h1 style="color:#ffffff;">Log in</h1>
 	</div>
