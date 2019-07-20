@@ -66,7 +66,10 @@ public class LoginController {
 	 */
 	@RequestMapping(value = "/login/loginCheck.cpp", method=RequestMethod.POST)
 	public String loginCheck(UserVO userVo, ModelMap model, HttpServletRequest req, HttpServletResponse res) throws Exception {
-		logger.debug("> loginCheck...");
+		logger.debug("> loginChecking...");
+		
+		boolean checkStatus = false;
+		
 		if(userVo != null
 			&& userVo.getUserId() != null
 			&& userVo.getUserPw() != null
@@ -76,19 +79,25 @@ public class LoginController {
 			
 			userVo = service.loginCheck(userVo);
 			
-			logger.debug("> result success");
-			logger.debug("> ID = " + userVo.getUserId());
-			logger.debug("> PW = " + userVo.getUserPw().length());
-			logger.debug("> E-MAIL = " + userVo.getUserEmail());
-			
-			model.addAttribute("result", "S");
-		}else {
+			if(userVo != null && userVo.getAuthStatus() != null && !"".equals(userVo.getAuthStatus())) {
+				checkStatus = true;
+				logger.debug("> login Success!");
+				logger.debug("> ID = " + userVo.getUserId());
+				logger.debug("> NAME = " + userVo.getUserName());
+				logger.debug("> E-MAIL = " + userVo.getUserEmail());
+				
+				//userVo를 세션에 등록하는 로직 추가할 것.
+				model.addAttribute("result", "S");
+			}
+		}
+		
+		if(!checkStatus) {
 			logger.debug("> result fails");
 			model.addAttribute("result", "F");
+			model.addAttribute("resultMsg", "사용자 정보가 없거나 승인되지 않은 아이디 입니다.");
 			try {
 				res.sendRedirect("/login/login.cpp");
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -153,6 +162,7 @@ public class LoginController {
 	public String joinConfirm(UserVO userVo, ModelMap model, HttpServletRequest req, HttpServletResponse res) throws Exception {
 		logger.debug("joinConfirm - success");
 
+		service.userConfirm(userVo);
 		try {
 			res.sendRedirect("/login/login.cpp");
 		} catch (IOException e) {

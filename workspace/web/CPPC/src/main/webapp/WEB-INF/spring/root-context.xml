@@ -12,6 +12,7 @@
 	<!-- properties 가져오기 -->
 	<context:property-placeholder location="/WEB-INF/properties/common.properties"/>
 	
+	<!-- DB 접속정보 -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="org.mariadb.jdbc.Driver" />
         <property name="url" value="${DataBase.Url}" />
@@ -19,13 +20,14 @@
         <property name="password" value="${DataBase.Password}"/>
 	</bean>
 
+	<!-- DB SQL 정보 -->
 	<bean id="SqlSessionFectory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="classpath:/sqlmap/mybatis-config.xml" />
 	</bean>
 
-	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate"
-		destroy-method="clearCache">
+	<!-- DB 세션 -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
 		<constructor-arg name="sqlSessionFactory" ref="SqlSessionFectory" />
 	</bean>
 	

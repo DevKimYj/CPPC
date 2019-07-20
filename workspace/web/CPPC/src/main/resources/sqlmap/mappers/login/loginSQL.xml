@@ -2,13 +2,48 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="loginMapper">
 
-	<select id="selectMember" parameterType="userVo" resultType="userVo">
-		/* loginMapper.selectMember */
+	<select id="selectUser" parameterType="userVo" resultType="userVo">
+		/* loginMapper.selectUser */
 		SELECT
-			'1' as userId
-			, '2' as userPw
-			, '3' as userEmail
+			USER_NO
+			, USER_ID
+			, USER_EMAIL
+			, USER_NAME
+			, AUTH_STATUS
 		FROM
-			DUAL
+			USER_INFO
+		WHERE
+			AUTH_STATUS = 'T'
+			AND USER_ID = #{userId}
+			AND USER_PW = #{userPw}
 	</select>
+	
+	<insert id="createUser" parameterType="userVo">
+		INSERT INTO
+		USER_INFO (
+			USER_NO
+			, USER_ID
+			, USER_PW
+			, USER_EMAIL
+			, USER_NAME
+			, AUTH_STATUS
+			, AUTH_KEY
+		)
+		VALUES (
+			#{userNo}
+			, #{userId}
+			, #{userPw}
+			, #{userEmail}
+			, #{userName}
+			, #{authStatus}
+			, #{authKey}
+		)
+	</insert>
+	
+	<update id="userConfirm" parameterType="userVo">
+		UPDATE USER_INFO SET
+			AUTH_STATUS = #{authStatus}
+		WHERE
+			AUTH_KEY = #{authKey}
+	</update>
 </mapper>

@@ -1,11 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+	<!--
+	Camel 표기법 사용
+		예를들어 USER_ID 라는 컬럼을 조회하면 자동으로 userId로 컬럼을 변환해준다.(VO에 자동으로 매칭시키기 위한 작업)
+		이 표기법을 사용하지 않는경우 USER_ID as userId 라고 sql문을 작성해야 UserVO에 있는 userId에 매칭되지만
+		이 표기법을 사용하는 경우 USER_ID 라고만 작성해도 자동으로 userId에 매칭된다.
+	-->
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings>
+	
+	<!--
+	VO 자동 매칭 Alias 설정
+		sql문서를 작성할 때 parameterType, resultType 등에 들어가는 타입을 정의한다.
+		여기에 등록하지 않고 사용하려면 xxxSQL.xml 파일 안에서 상단부분에 미리 별도 선언을 해야한다.
+	-->
 	<typeAliases>
 		<typeAlias type="com.u1.cpp.login.service.UserVO" alias="userVo" />
 	</typeAliases>
 	
+	<!--
+	SQL문서 설정
+		SQL문서를 여기에 등록해야 해당 SQL문을 실행할 수 있다.
+	-->
 	<mappers>
 		<mapper resource="sqlmap/mappers/login/loginSQL.xml"/>
 	</mappers>
+	
 </configuration>

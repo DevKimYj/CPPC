@@ -47,14 +47,14 @@ public class LoginServiceImpl implements LoginService {
 		userVo.setAuthKey(authKey);
 		
 		//메일 인증 상태(아직 인증 전이므로 False)
-		userVo.setAuthstatus("F");
+		userVo.setAuthStatus("F");
 
 		//사용자 고유번호 생성
 		long tm = System.currentTimeMillis();
 		SimpleDateFormat dayTime = new SimpleDateFormat("yyMMddHHmmssSSS"); 
 		String userNo = dayTime.format(new Date(tm));
 		userVo.setUserNo(userNo);
-		
+		userVo.setUserName("김용진");
 		//DB에 사용자 정보 생성
 		dao.createUser(userVo);
 		
@@ -77,11 +77,17 @@ public class LoginServiceImpl implements LoginService {
 		sendMail.setFrom("pursue.to.cpp@gmail.com", "CPPC");
 
 		//수신 메일 주소
-		sendMail.setTo(userVo.getUserEmail());
+		sendMail.setTo("dydwls1153@naver.com");
 
 		//메일 발송
 		sendMail.send();
 		
+	}
+
+	@Override
+	public void userConfirm(UserVO userVo) throws Exception {
+		userVo.setAuthStatus("T");
+		dao.userConfirm(userVo);
 	}
 
 }

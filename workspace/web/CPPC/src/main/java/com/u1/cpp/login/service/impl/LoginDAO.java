@@ -13,11 +13,15 @@ public class LoginDAO {
 	private SqlSession sql;
 	
 	public UserVO loginCheck(UserVO userVo) throws Exception{
-		return sql.selectOne("loginMapper.selectMember", userVo);
+		return sql.selectOne("loginMapper.selectUser", userVo);
 	}
 
 	public void createUser(UserVO userVo) throws Exception{
 		sql.insert("loginMapper.createUser", userVo);
+	}
+
+	public void userConfirm(UserVO userVo) {
+		sql.update("loginMapper.userConfirm", userVo);
 	}
 
 }

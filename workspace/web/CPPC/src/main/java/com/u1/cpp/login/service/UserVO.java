@@ -15,8 +15,9 @@ public class UserVO {
 	private String userId;		//아이디
 	private String userPw;		//비밀번호
 	private String userEmail;	//메일 정보
+	private String userName;	//사용자 이름
 	private String authKey;		//메일인증 인증키
-	private String authstatus;	//인증 상태
+	private String authStatus;	//인증 상태
 	
 	public String getUserNo() {
 		return userNo;
@@ -43,17 +44,22 @@ public class UserVO {
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
 	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 	public String getAuthKey() {
 		return authKey;
 	}
 	public void setAuthKey(String authKey) {
 		this.authKey = authKey;
 	}
-	public String getAuthstatus() {
-		return authstatus;
+	public String getAuthStatus() {
+		return authStatus;
 	}
-	public void setAuthstatus(String authstatus) {
-		this.authstatus = authstatus;
+	public void setAuthStatus(String authStatus) {
+		this.authStatus = authStatus;
 	}
-	
 }
