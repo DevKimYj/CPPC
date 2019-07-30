@@ -30,7 +30,6 @@ public class MainController {
 	 */
 	@RequestMapping(value = "/main.cpp")
 	public String mainView() {
-		logger.debug("call /main.cpp");
 		return "main/main.t";
 	}
 }

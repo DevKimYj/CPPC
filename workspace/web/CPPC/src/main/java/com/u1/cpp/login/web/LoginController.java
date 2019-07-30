@@ -1,8 +1,6 @@
 package com.u1.cpp.login.web;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.u1.cpp.common.SecurityUtil;
 import com.u1.cpp.login.service.LoginService;
 import com.u1.cpp.login.service.UserVO;
-import com.u1.cpp.main.web.MainController;
 
 /**
   * @FileName : LoginController.java
@@ -29,6 +26,7 @@ import com.u1.cpp.main.web.MainController;
   * @프로그램 설명 : login 컨트롤러
  */
 @Controller
+@RequestMapping(value = "/login/*")
 public class LoginController {
 
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
@@ -46,7 +44,7 @@ public class LoginController {
 	  * @return
 	  * @throws Exception
 	 */
-	@RequestMapping(value = "/login/login.cpp")
+	@RequestMapping(value = "login.cpp")
 	public String loginView() throws Exception {
 		return "login/login";
 	}
@@ -64,7 +62,7 @@ public class LoginController {
 	  * @return
 	  * @throws Exception
 	 */
-	@RequestMapping(value = "/login/loginCheck.cpp", method=RequestMethod.POST)
+	@RequestMapping(value = "loginCheck.cpp", method=RequestMethod.POST)
 	public String loginCheck(UserVO userVo, ModelMap model, HttpServletRequest req, HttpServletResponse res) throws Exception {
 		logger.debug("> loginChecking...");
 		
@@ -76,6 +74,9 @@ public class LoginController {
 			&& !"".equals(userVo.getUserId())
 			&& !"".equals(userVo.getUserPw())) {
 			//DB에서 사용자 인증여부 확인하는 로직 추가
+			//비밀번호 암호화
+			SecurityUtil sutil = new SecurityUtil();
+			userVo.setUserPw(sutil.encryptSHA256(userVo.getUserPw()));
 			
 			userVo = service.loginCheck(userVo);
 			
@@ -113,7 +114,7 @@ public class LoginController {
 	  * @return
 	  * @throws Exception
 	 */
-	@RequestMapping(value = "/login/join.cpp")
+	@RequestMapping(value = "join.cpp")
 	public String joinView() throws Exception {
 		return "login/join";
 	}
@@ -131,13 +132,17 @@ public class LoginController {
 	  * @return
 	  * @throws Exception
 	 */
-	@RequestMapping(value = "/login/joinRequest.cpp")
+	@RequestMapping(value = "joinRequest.cpp")
 	public String joinRequest(UserVO userVo, ModelMap model, HttpServletRequest req, HttpServletResponse res) throws Exception {
+		//비밀번호 암호화
+		SecurityUtil sutil = new SecurityUtil();
+		userVo.setUserPw(sutil.encryptSHA256(userVo.getUserPw()));
+
 		//사용자 정보 생성
 		service.createUser(userVo);
 		
 		try {
-			res.sendRedirect("/login/login.cpp");
+			res.sendRedirect("login.cpp");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -158,7 +163,7 @@ public class LoginController {
 	  * @return
 	  * @throws Exception
 	 */
-	@RequestMapping(value = "/login/joinConfirm.cpp")
+	@RequestMapping(value = "joinConfirm.cpp")
 	public String joinConfirm(UserVO userVo, ModelMap model, HttpServletRequest req, HttpServletResponse res) throws Exception {
 		logger.debug("joinConfirm - success");
 

@@ -29,7 +29,7 @@ function check(){
 	</div>
 	<button type="submit" class="btn btn-primary btn-lg btn-block">Log in</button>
 	<div style="text-align:center; margin-top:10px;">
-		<span><a href="#" class="alert-link" style="text-decoration:none">비밀번호 찾기</a> | <a href="#" class="alert-link" style="text-decoration:none">회원가입</a></span>
+		<span><a href="#" class="alert-link" style="text-decoration:none">비밀번호 찾기</a> | <a href="<c:url value='/login/join.cpp'/>" class="alert-link" style="text-decoration:none">회원가입</a></span>
 	</div>
 </form>
 </body>

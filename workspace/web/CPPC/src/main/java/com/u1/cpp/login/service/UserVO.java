@@ -1,7 +1,5 @@
 package com.u1.cpp.login.service;
 
-import com.u1.cpp.common.SecurityUtil;
-
 /**
   * @FileName : UserVO.java
   * @Project : CPPC
@@ -35,8 +33,7 @@ public class UserVO {
 		return userPw;
 	}
 	public void setUserPw(String userPw) {
-		SecurityUtil su = new SecurityUtil();
-		this.userPw = su.encryptSHA256(userPw);
+		this.userPw = userPw;
 	}
 	public String getUserEmail() {
 		return userEmail;

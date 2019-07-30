@@ -9,3 +9,12 @@
 .btn-grp{
 	text-align:right;
 }
+
+
+/*************************************
+label
+**************************************/
+._label_title{
+	margin-top:10px;
+	margin-bottom:5px;
+}
